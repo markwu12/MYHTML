@@ -1,0 +1,54 @@
+﻿@model IEnumerable<prjView.Models.IntroDuction>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>A108223021介紹有趣事項</title>
+</head>
+<body>
+    <h3>有趣的事</h3>
+    <hr />
+    <table border="0" cellspacing="0" cellpadding="10">
+        <tr bgcolor="#a6b141" align="center">
+            <th>編號</th>
+            <th>名稱</th>
+            <th>介紹內容</th>
+            <th></th>
+        </tr>
+        @{ 
+            int i = 0;
+            string imgName, colorStyle;
+        }
+        @foreach (var item in Model)
+        {
+            imgName = item.id + ".jpg";
+            if(i %2 == 0)
+            {
+                colorStyle = "aliceblue";
+            }
+            else
+            {
+                colorStyle = "#edf8cf";
+            }
+            i++;
+            <tr align="center" bgcolor="@colorStyle">
+                <td>@item.id</td>
+                <td>
+                    @item.name<br />
+                    <img src="~/Images/@imgName" width="150" />
+                </td>
+                <td>@item.Introduction</td>
+                <td>
+                    <a href="https://zh.wikipedia.org/wiki/@item.Introduction" target="_blank">連結</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
